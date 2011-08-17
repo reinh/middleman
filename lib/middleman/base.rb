@@ -164,7 +164,7 @@ module Middleman::Base
         false
       end
 
-      render_options = { :layout => layout }
+      render_options = app.settings.render_options.merge({ :layout => layout })
       render_options[:layout_engine] = options[:layout_engine] if options.has_key? :layout_engine
       request_path = request.path_info.gsub("%20", " ")
       result = render(request_path, render_options)
